@@ -1,2 +1,1 @@
-# operation-hydra-jit-defense
-Sub-title: Behavioral Heuristics &amp; Agentic Workflow for Safe Revenue Protection (2026 Roadmap)
+The "Executive Summary": Project mission, tech stack (BigQuery, Gemini, Python), and the business impact (Safe Revenue Saved).
