@@ -1,0 +1,37 @@
+[
+  {
+    "account_id": "acct_d52700cd",
+    "intent_classification": "MODEL_EXTRACTION",
+    "confidence_score": 0.92,
+    "rationale": "High entropy (7.418) and CPU spike (91.22%) indicate polymorphic JIT regeneration used for model extraction.",
+    "enforcement_action": "BLOCK"
+  },
+  {
+    "account_id": "acct_8b9c3b39",
+    "intent_classification": "MODEL_EXTRACTION",
+    "confidence_score": 0.94,
+    "rationale": "Extreme CPU usage (94.53%) combined with high entropy suggests encrypted payloads bypassing filters.",
+    "enforcement_action": "BLOCK"
+  },
+  {
+    "account_id": "acct_77a3d049",
+    "intent_classification": "MODEL_EXTRACTION",
+    "confidence_score": 0.88,
+    "rationale": "High entropy (7.476) indicates an encrypted payload, likely targeting proprietary data via JIT scripts.",
+    "enforcement_action": "BLOCK"
+  },
+  {
+    "account_id": "acct_bfdc9309",
+    "intent_classification": "MODEL_EXTRACTION",
+    "confidence_score": 0.98,
+    "rationale": "Extreme entropy (7.963) and CPU spike (95.73%) are highly characteristic of PROMPTLOCK extraction techniques.",
+    "enforcement_action": "BLOCK"
+  },
+  {
+    "account_id": "acct_d794c4a7",
+    "intent_classification": "MODEL_EXTRACTION",
+    "confidence_score": 0.95,
+    "rationale": "High entropy and JIT regeneration patterns (90.42% CPU) consistent with model extraction attempts.",
+    "enforcement_action": "BLOCK"
+  }
+]
