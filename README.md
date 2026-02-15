@@ -1,6 +1,8 @@
 # Operation Hydra: JIT Malware Defense & Revenue Protection
 **Role:** Safe Revenue Workflow Manager, Google Trust & Safety (Compute)  
+
 **Author:** Daniel Rodriguez III
+
 **Context:** 2026 Agentic Threat Landscape  
 
 ## 🛡️ Project Mission
