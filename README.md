@@ -19,7 +19,7 @@ Standard antivirus and static signature detection are obsolete in 2026. The **HO
 2. **Data Engineering:** Created the `v_high_risk_compute` BigQuery view to aggregate risk by account.
 3. **Agentic Detection:** Integrated Gemini to distinguish between 'Resource Hijacking' and 'Model Extraction'.
 4. **Workflow Automation:** Built a weighted enforcement engine to automate blocks and throttles.
-#5. **Executive Impact:** (Upcoming) Visualizing revenue saved vs. risk exposure.
+5. **Executive Impact:** (Upcoming) Visualizing revenue saved vs. risk exposure.
 
 ## 🧪 Key Innovation: The Synergy Bonus
 Traditional models treat CPU usage and Encryption separately. Our **Revenue Protection Engine** applies a `SYNERGY_BONUS` when high Entropy and JIT-regeneration occur simultaneously—the exact fingerprint of an agentic model-extraction attempt.
