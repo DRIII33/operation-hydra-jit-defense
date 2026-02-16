@@ -18,7 +18,7 @@ Operation Hydra is a behavioral detection engine designed to mitigate the rise o
 ## Technical Architecture: The 402 vs. 340 Logic
 A critical component of the Hydra SOP is the **"Adaptive Enforcement Hierarchy."**
 * **402 Total Detections:** The engine identified 402 accounts exhibiting malicious intent.
-* **340 Mitigated:** To minimize false positives and maintain research throughput, only 340 accounts (84.5% of detections) received automated enforcement (Hard-Blocks for Model Extraction, Throttling for Lateral Propagation).
+* **340 Mitigated:** To minimize false positives and maintain research throughput, only 340 accounts received automated enforcement (Hard-Blocks for Model Extraction, Throttling for Lateral Propagation).
 * **62 Monitored:** 62 lower-risk Resource Hijacking events were intentionally diverted to "Monitor" status, ensuring the 95.45% Peak Precision threshold was maintained for Enterprise-tier protection.
 
 ## Dashboard Insight: Velocity Scaling
