@@ -1,31 +1,24 @@
 # SOP: Operation Hydra - Behavioral Enforcement
-**Version:** 1.2 (Revised for Weighted Scoring)  
+**Version:** 2.0 (Revised for Enforcement vs. Detection Parity)  
 **Status:** PRODUCTION READY  
 
 ## 1. Goal
-To provide a structured, automated response path for JIT-based compute abuse while maintaining a <0.1% False Positive Rate for Enterprise-tier customers.
+Maintain a <0.1% False Positive Rate for Enterprise customers while ensuring 100% containment of Model Extraction attempts.
 
 ## 2. Technical Enforcement Matrix
-Enforcement is driven by the **RevenueProtectionEngine** risk score.
+The engine distinguishes between **Detection** (identifying intent) and **Enforcement** (taking action). 
 
-| Risk Score | Confidence | Action Path | Owner | SLA |
-| :--- | :--- | :--- | :--- | :--- |
-| **100 - 150+** | High (>0.9) | **Hard Block** (IAM Revoke) | Infrastructure SRE | < 1 min |
-| **60 - 99** | Med (0.6-0.9) | **Dynamic Throttling** (Quota -70%) | T&S Operations | 1 hour |
-| **< 60** | Low (<0.6) | **Silent Monitoring** (Log Only) | Abuse Analyst | 24 hours |
+| Risk Score | Peak Confidence | Enforcement Action | Policy Basis |
+| :--- | :--- | :--- | :--- |
+| **110+** | **> 0.95** | **Hard Block** | Zero-tolerance for Model Extraction. |
+| **60 - 109**| **0.60 - 0.94**| **Dynamic Throttle**| Mitigates Lateral Propagation & Abuse. |
+| **< 60** | **< 0.60** | **Silent Monitor** | Used for heuristic baseline & safe noise. |
 
-## 3. Incident Rationale Logic
-Our automated notifications to users include specific behavioral markers to reduce support ticket friction:
-- **SYNERGY_JIT_H:** Detection of simultaneous encrypted payload execution and JIT mutation.
-- **EGRESS_C2:** Abnormal outbound pivots suggesting a Command-and-Control model.
-- **EXTREME_ANOMALY:** Statistical outliers in entropy indicating advanced zero-day tools.
+## 3. The 340/402 Discrepancy (Operational Policy)
+Operation Hydra detected 402 malicious events. However, only **340** were subjected to "Hard Mitigation" (Block/Throttle). The remaining 62 events (primarily Resource Hijacking in Free Tiers) were diverted to **Silent Monitoring** to:
+1. Gather intelligence on new JIT-mutation patterns.
+2. Avoid over-enforcement in non-revenue generating tiers.
 
 ## 4. Human-in-the-Loop (HITL) / Appeals
-1. **Automated Notification:** All blocks/throttles trigger an immediate email to the account owner.
-2. **Enterprise Escalation:** Accounts with `revenue_tier == 'Enterprise'` are automatically routed to a Technical Account Manager (TAM) for manual confirmation before a Hard Block.
-3. **Behavioral Allowlisting:** If an appeal is granted (e.g., legitimate HPC research), the `account_id` is added to the `hpc_behavioral_whitelist` BigQuery table to prevent future detection cycles.
-
-## 5. Cross-Functional Stakeholders
-- **TPM (Author):** Maintains detection thresholds and synergy weights.
-- **Engineering:** Manages the API-based IAM revocation scripts.
-- **Legal/Policy:** Reviews intent classifications for Terms of Service (ToS) compliance.
+- **Enterprise Safeguard:** All accounts flagged in the Enterprise tier trigger an automated TAM (Technical Account Manager) notification.
+- **Behavioral Allowlisting:** Legitimate HPC research that mimics JIT behavior can be allowlisted via the `hpc_behavioral_whitelist` table.
